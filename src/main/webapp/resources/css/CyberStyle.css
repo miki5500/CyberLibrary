@@ -1,0 +1,226 @@
+html
+{
+	height:100%;
+	
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: #17282B;
+	color: white;
+}
+
+.loginbox
+{
+	width: 320px;
+	height:420px;
+	background: #343a40;
+	color:#fff;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+.loginbox input
+{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.loginbox input::placeholder
+{
+	color: #000; 
+}
+.loginbox a
+{
+	color: #000;
+}
+.text-muted-w
+{
+	color: #000;
+}
+.loginbox input[type="email"], input[type="password"], input[type="text"]
+{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background:transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	width: 90%;
+}
+.avatar
+{
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 40px);
+	color: #007bff;
+}
+
+.fa-user-circle
+{
+	color:blue;
+}
+
+/*Wygląd strony dodawania książki*/
+
+.addBookBox
+{
+	height: 520px;
+	width: 100%;
+	background: #343a40;
+	color:#fff;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+.addBookBox input
+{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.addBookBox  input[type="text"]
+{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background:transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	width: 90%;
+}
+ .addBookBox select
+{
+	width: 100%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: block;
+	padding: 3px 5px 3px;
+	border-bottom: 1px solid #fff;
+	background-color: #343a40;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+.wrap
+{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	display: block;
+}
+.wrap:after
+{
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	color: #000;
+	position: absolute;
+	right: 10;
+	top: 2px;
+	z-index: 1;
+	height: 100%;
+	content: "\f0dc";
+	font-size: 25px;
+}
+.lastBorrowed
+{
+	height: 520px;
+	width: 100%;
+	background: #543a50;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.padds
+{
+	padding: 5% 10% 0% 10%;
+}
+.addIcon
+{
+	position: absolute;
+	left: 10%;
+	top: -20px;
+	font-size:60px;
+}
+
+.kontener
+{
+    height:600px;
+	text-align: left;
+	background: #343a40;
+	color: #fff;
+	margin-left: 75px;
+	margin-right: 75px;
+	padding-top: 30px;
+}
+.kontener ul
+{
+	 list-style-position: inside;
+}
+.footer
+{
+    text-align: center;
+	background: #543a50;
+	margin-left: 75px;
+	margin-right: 75px;
+	padding: 10px;
+}
+.containeer
+{
+	padding: 0 40 0 40;
+}
+.addB
+{
+   margin-top: 10px;
+}
+.reg-foot
+{
+    width: 320px;
+}
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.green
+{
+    color: green;
+}
+
+.red
+{
+    color: red;
+}
