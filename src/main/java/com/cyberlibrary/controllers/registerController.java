@@ -33,21 +33,14 @@ public class registerController {
         System.out.println(user.getPassword());
         String returnPage;
         User userExist = userService.getUserByEmail(user.getEmail());
-
+        System.out.println("Jestem tu");
         new UserRegisterValidator().validateEmailExist(userExist,result);
-
+        System.out.println("Jestem tam");
         new UserRegisterValidator().validate(user,result);
 
-
-        if(result.hasErrors())
-        {
-            returnPage = "register";
-        }else
-        {
+            System.out.println("Jestem save");
             userService.saveUser(user);
-
             returnPage = "index";
-        }
         return returnPage;
 
     }

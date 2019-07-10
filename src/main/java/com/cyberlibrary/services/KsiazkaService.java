@@ -16,4 +16,6 @@ public interface KsiazkaService {
     List<Ksiazka> getKsiazkiByDziedzina(Dziedzina dziedzina);
     void saveKsiazka(Ksiazka ksiazka);
     void delete(Ksiazka ksiazka);
+    PageOfBooks pageOfBorrowed(int first);
+
 }

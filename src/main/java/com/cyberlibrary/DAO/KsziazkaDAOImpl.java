@@ -18,14 +18,13 @@ import java.util.List;
 public class KsziazkaDAOImpl implements KsiazkaDAO {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Override
     public List<Ksiazka> getKsiazki() {
         Session session = sessionFactory.getCurrentSession();
         Query<Ksiazka> query = session.createQuery("from Ksiazka",Ksiazka.class);
-        List<Ksiazka> ksiazki = query.getResultList();
-        return ksiazki;
+        return query.getResultList();
     }
 
     public PageOfBooks getPaginatedList(int first)
@@ -46,8 +45,7 @@ public class KsziazkaDAOImpl implements KsiazkaDAO {
         Session session = sessionFactory.getCurrentSession();
         Query<Ksiazka> query = session.createQuery("from Ksiazka where id =:idk",Ksiazka.class);
         query.setParameter("idk",id);
-        Ksiazka ksiazki = query.getSingleResult();
-        return ksiazki;
+        return query.getSingleResult();
     }
 
     @Override
@@ -55,8 +53,7 @@ public class KsziazkaDAOImpl implements KsiazkaDAO {
         Session session = sessionFactory.getCurrentSession();
         Query<Ksiazka> query = session.createQuery("select k from Ksiazka k where k.autor.id =:ida",Ksiazka.class);
         query.setParameter("ida",autor.getId());
-        List<Ksiazka> ksiazki = query.getResultList();
-        return ksiazki;
+        return query.getResultList();
     }
 
 
@@ -66,8 +63,7 @@ public class KsziazkaDAOImpl implements KsiazkaDAO {
         Session session = sessionFactory.getCurrentSession();
         Query<Ksiazka> query = session.createQuery("select k from Ksiazka k where k.dziedzina.id =:idd",Ksiazka.class);
         query.setParameter("idd",dziedzina.getId());
-       List<Ksiazka> ksiazki = query.getResultList();
-        return ksiazki;
+        return query.getResultList();
     }
 
     @Override
@@ -85,5 +81,18 @@ public class KsziazkaDAOImpl implements KsiazkaDAO {
     public void delete(Ksiazka ksiazka) {
         Session session = sessionFactory.getCurrentSession();
         session.delete( ksiazka);
+    }
+
+    @Override
+    public PageOfBooks getPaginatedBorrowedList(int first) {
+        PageOfBooks pageOfBooks = new PageOfBooks();
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from Ksiazka where dostepna=0");
+        Query<Ksiazka> queryK = session.createQuery("from Ksiazka where dostepna = 0",Ksiazka.class);
+        queryK.setFirstResult(first);
+        queryK.setMaxResults(8);
+        pageOfBooks.setCountOfPages((long)query.getSingleResult());
+        pageOfBooks.setKsiazkaList(queryK.getResultList());
+        return pageOfBooks;
     }
 }

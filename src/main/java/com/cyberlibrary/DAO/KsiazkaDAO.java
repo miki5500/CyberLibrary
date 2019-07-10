@@ -3,6 +3,7 @@ package com.cyberlibrary.DAO;
 import com.cyberlibrary.entity.Autor;
 import com.cyberlibrary.entity.Dziedzina;
 import com.cyberlibrary.entity.Ksiazka;
+import com.cyberlibrary.helpers.PageOfAutors;
 import com.cyberlibrary.helpers.PageOfBooks;
 import com.cyberlibrary.helpers.SearchHelper;
 
@@ -18,4 +19,5 @@ public interface KsiazkaDAO {
     List<Ksiazka> getKsiazkaBySearch(SearchHelper searchHelper);
     void saveKsiazka(Ksiazka ksiazka);
     void delete(Ksiazka ksiazka);
+    PageOfBooks getPaginatedBorrowedList(int first);
 }

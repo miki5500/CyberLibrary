@@ -12,8 +12,6 @@ public interface UserDao {
     User getUserById(int id);
     void saveUser(User user);
     void deleteUser(User user);
-    void updatePassword(User user);
-    void updateUser(User user);
     PageOfUsers getUserPage(int first);
 
 }

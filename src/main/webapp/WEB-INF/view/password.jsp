@@ -33,22 +33,12 @@
                     </div>
                     <h1 class="h3 mb-3 font-weight-normal">Zarejestruj się. </h1>
                     <form:form id="register" action="/cyberlibrary/profil/editPassword" modelAttribute="user" method="POST">
-                            <form:hidden path="id" />
-                            <form:hidden path="email"/>
-                            <form:hidden path="lastName"/>
-                            <form:hidden path="active" />
-                            <form:hidden path="name" />
-
                             <label for="inputPassword" class="sr-only">Hasło:</label>
-                            <form:password path="password" name="inputPassword" id="inputPassword" placeholder="Hasło:" required="true" />
+                            <form:password path="haslo" name="inputPassword" id="inputPassword" placeholder="Hasło:" required="true" />
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Zmień hasło</button>
 
                     </form:form>
                 </div>
-                <div class="col-sm-11 footer reg-foot">
-                        <p class="text-muted-w">&copy; 2019-2020</p>
-                </div>
-
                </div>
             </section>
         </main>

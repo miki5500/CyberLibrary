@@ -32,13 +32,13 @@
                         <i class="fas fa-user fa-5x "></i>
                     </div>
                     <h1 class="h3 mb-3 font-weight-normal">Zarejestruj się. </h1>
-                    <form:form id="register" action="/cyberlibrary/registration" modelAttribute="user" method="POST">
+                    <form:form id="register" action="/cyberlibrary/editData" modelAttribute="user" method="POST">
                                     <label for="nameInput" class="sr-only" >Imię:</label>
-                                    <form:input type="text" path="name" id="nameInput" placeholder="Imię:" required="true" />
+                                    <form:input type="text" path="imie" id="nameInput" placeholder="Imię:" required="true" />
                                     <label for="lastnameInput" class="sr-only" >Nazwisko:</label>
-                                    <form:input type="text" path="lastName" id="lastnameInput" placeholder="Nazwisko:" required="true" />
+                                    <form:input type="text" path="nazwisko" id="lastnameInput" placeholder="Nazwisko:" required="true" />
                                     <label for="email" class="sr-only">E-mail:</label>
-                                    <form:input type="email" path="email" name="email" id="inputEmail"  placeholder="E-mail:" required="true"  />
+                                    <form:input type="mail" path="email" name="email" id="inputEmail"  placeholder="E-mail:" required="true"  />
                                     <button class="btn btn-lg btn-primary btn-block" type="submit">Zmień dane</button>
 
                     </form:form>

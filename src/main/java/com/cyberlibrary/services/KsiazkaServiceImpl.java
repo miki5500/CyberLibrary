@@ -21,8 +21,7 @@ public class KsiazkaServiceImpl implements KsiazkaService {
     @Override
     @Transactional
     public List<Ksiazka> getKsiazki() {
-        List<Ksiazka> ksiazki = ksiazkaDAO.getKsiazki();
-        return ksiazki;
+        return ksiazkaDAO.getKsiazki();
     }
 
     @Override
@@ -33,23 +32,27 @@ public class KsiazkaServiceImpl implements KsiazkaService {
 
     @Override
     @Transactional
+    public PageOfBooks pageOfBorrowed(int first)
+    {
+        return ksiazkaDAO.getPaginatedBorrowedList(first);
+    }
+
+    @Override
+    @Transactional
     public Ksiazka getKsiazkaById(int id) {
-        Ksiazka ksiazki = ksiazkaDAO.getKsiazkaById(id);
-        return ksiazki;
+        return ksiazkaDAO.getKsiazkaById(id);
     }
 
     @Override
     @Transactional
     public List<Ksiazka> getKsiazkiByAutor(Autor autor) {
-        List<Ksiazka> ksiazki = ksiazkaDAO.getKsiazkiByAutor(autor);
-        return ksiazki;
+        return ksiazkaDAO.getKsiazkiByAutor(autor);
     }
 
     @Override
     @Transactional
     public List<Ksiazka> getKsiazkiByDziedzina(Dziedzina dziedzina) {
-        List<Ksiazka> ksiazki = ksiazkaDAO.getKsiazkiByDziedzina(dziedzina);
-        return ksiazki;
+        return ksiazkaDAO.getKsiazkiByDziedzina(dziedzina);
     }
 
     @Override

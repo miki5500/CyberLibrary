@@ -45,9 +45,6 @@
 
                     </form:form>
                 </div>
-                <div class="col-sm-11 footer reg-foot">
-                        <p class="text-muted-w">&copy; 2019-2020</p>
-                </div>
 
                </div>
             </section>

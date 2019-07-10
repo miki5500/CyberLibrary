@@ -5,6 +5,7 @@ import com.cyberlibrary.entity.Ksiazka;
 import com.cyberlibrary.entity.userEntity.User;
 import com.cyberlibrary.entity.userEntity.UserService;
 import com.cyberlibrary.helpers.PageOfAutors;
+import com.cyberlibrary.helpers.PageOfBooks;
 import com.cyberlibrary.helpers.PageOfUsers;
 import com.cyberlibrary.services.AutorService;
 import com.cyberlibrary.services.KsiazkaService;
@@ -104,6 +105,37 @@ public class adminController {
        autorService.deleteAutor(id);
 
         return "redirect:/admin/autorlist?page=0";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin/borrowedBooks")
+    public String getBorrowedBooks(@RequestParam("page") int strona, Model model)
+    {
+        PageOfBooks pageOfBooks= ksiazkaService.pageOfBorrowed(strona * 8);
+        List<Ksiazka> k = pageOfBooks.getKsiazkaList();
+        model.addAttribute("ksiazki",k);
+        model.addAttribute("strony",pageOfBooks.getCountOfPages());
+        if(strona > 0)
+        {
+            model.addAttribute("prev", strona - 1);
+        }
+        if(strona < pageOfBooks.getCountOfPages())
+        {
+            model.addAttribute("next",strona + 1);
+        }
+        return "borrowedList";
+
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin/bookreturn")
+    public String returnBook(@RequestParam("bookId") int id)
+    {
+        Ksiazka k = ksiazkaService.getKsiazkaById(id);
+        k.returnBook();
+        ksiazkaService.saveKsiazka(k);
+        return "redirect:/admin/borrowedBooks?page=0";
+
     }
 
 }

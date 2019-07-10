@@ -30,11 +30,11 @@ public class User {
     @Column(name = "aktywny")
     private int active;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinTable(name = "userroles", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
     private Set<Role> roles;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinTable(
             name="ksiazka_do_user",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -44,12 +44,6 @@ public class User {
 
     @Transient
     private String operacja;
-
-    @Transient
-    private Role rola;
-
-    @Transient
-    private Set<Ksiazka> ksiazki;
 
     @Transient
     private String newPassword;
@@ -118,15 +112,6 @@ public class User {
         this.operacja = operacja;
     }
 
-
-    public Role getRola() {
-        return rola;
-    }
-
-    public void setRola(Role rola) {
-        this.rola = rola;
-    }
-
     public String getNewPassword() {
         return newPassword;
     }
@@ -155,27 +140,5 @@ public class User {
             borrowedBooks = new HashSet<>();
         }
         borrowedBooks.add(ksiazka);
-    }
-
-    public Set<Ksiazka> getKsiazki() {
-        return ksiazki;
-    }
-
-    public void setKsiazki(Set<Ksiazka> ksiazki) {
-        this.ksiazki = ksiazki;
-    }
-
-    public void addRole()
-    {
-        if(roles == null)
-        {
-            roles = new HashSet<>();
-        }
-        roles.add(rola);
-    }
-
-    public void addBooks()
-    {
-        borrowedBooks = ksiazki;
     }
 }

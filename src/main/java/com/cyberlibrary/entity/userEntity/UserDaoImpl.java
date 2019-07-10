@@ -23,8 +23,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> getAllUserList() {
         Session currentSession = sessionFactory.getCurrentSession();
         Query<User> query = currentSession.createQuery("from User", User.class);
-        List<User> users = query.getResultList();
-        return users;
+        return query.getResultList();
     }
 
     @Override
@@ -32,7 +31,7 @@ public class UserDaoImpl implements UserDao {
         Session currentSession = sessionFactory.getCurrentSession();
         Query<User> query = currentSession.createQuery("from User where email=:mail",User.class);
         query.setParameter("mail",mail);
-        User u = null;
+        User u;
         try {
             u = query.getSingleResult();
         }catch (NoResultException r)
@@ -64,20 +63,6 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updatePassword(User user) {
-        Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(user);
-    }
-
-    @Override
-    public void updateUser(User user) {
-        Session session = sessionFactory.getCurrentSession();
-        user.addRole();
-        user.addBooks();
-        session.saveOrUpdate(user);
-    }
-
-    @Override
     public PageOfUsers getUserPage(int first) {
 
         Session session = sessionFactory.getCurrentSession();
@@ -86,7 +71,6 @@ public class UserDaoImpl implements UserDao {
         queryK.setFirstResult(first);
         queryK.setMaxResults(8);
 
-        PageOfUsers users = new PageOfUsers(queryK.getResultList(),(long)query.getSingleResult());
-        return users;
+        return new PageOfUsers(queryK.getResultList(),(long)query.getSingleResult());
     }
 }

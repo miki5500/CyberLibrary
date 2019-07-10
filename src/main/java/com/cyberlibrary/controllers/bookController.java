@@ -117,7 +117,7 @@ public class bookController {
         }else
         {
             ksiazka.setDostepna(0);
-            String email= null;
+            String email;
             email = SpringProjectUtils.getLoggedUser();
             User user = userService.getUserByEmail(email);
             ksiazka.setBorrowedBy(user);
@@ -143,13 +143,6 @@ public class bookController {
             ksiazkaService.saveKsiazka(ksiazka);
         }
         return "redirect:/cyberlibrary";
-    }
-
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @GetMapping("books/return")
-    public String returnBook()
-    {
-        return "admin";
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -190,7 +183,7 @@ public class bookController {
         }
 
 
-        if(!(addBook.getCategory().equals(k.getDziedzina())))
+        if(!(addBook.getCategory().equals(k.getDziedzina().getNazwa())))
         {
             Dziedzina d = dziedzinaService.getDziedzina(addBook.getCategory());
             k.setDziedzina(d);

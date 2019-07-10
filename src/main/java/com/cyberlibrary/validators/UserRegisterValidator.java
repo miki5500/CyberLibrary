@@ -21,28 +21,25 @@ public class UserRegisterValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User u = (User) o;
 
-        if (!u.getEmail().equals(null)) {
+        if (u.getEmail() != null) {
             boolean isMatch = SpringProjectUtils.checkEmailOrPassword(SpringProjectConstants.EMAIL_PATTERN, u.getEmail());
             if (!isMatch) {
                 errors.rejectValue("email", "Adres email niepoprawny");
             }
         }
 
-        if (!u.getPassword().equals(null)) {
+        if (u.getPassword() != null) {
             boolean isMatch = SpringProjectUtils.checkEmailOrPassword(SpringProjectConstants.PASSWORD_PATTERN, u.getPassword());
             if (!isMatch) {
-                //errors.rejectValue("password", "Hasło jest niepoprawne");
-                System.out.println("Hasło niepoprawne");
+                errors.rejectValue("password", "Hasło jest niepoprawne");
             }
         }
     }
 
     public void validateEmailExist(User user, Errors errors) {
         if (user != null) {
-           // errors.rejectValue("email", "Użytkownik o takim adresie już istnieje");
-            System.out.println("Użytkownik o takim adresie już istnieje");
+            errors.rejectValue("email", "Użytkownik o takim adresie już istnieje");
         }
     }
-
 
 }

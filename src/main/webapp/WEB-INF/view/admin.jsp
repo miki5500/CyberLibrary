@@ -37,7 +37,7 @@
                             					</div>
                             					<div>
                             						<a href="/cyberlibrary/admin/userlist?page=0" class="btn btn-lg btn-primary btn-block" >Lista użytkowników</a>
-                            						<a href="/cyberlibrary/admin?panel=3" class="btn btn-lg btn-primary btn-block" >Wypożyczone książki</a>
+                            						<a href="/cyberlibrary/admin/borrowedBooks?page=0" class="btn btn-lg btn-primary btn-block" >Wypożyczone książki</a>
                             						<a href="/cyberlibrary/books/bookList?page=0" class="btn btn-lg btn-primary btn-block" >Lista książek </a>
                             						<a href="/cyberlibrary/admin/autorlist?page=0" class="btn btn-lg btn-primary btn-block" >Lista autorów </a>
                             					<div>
@@ -69,6 +69,17 @@
                                                           </tr>
                                                        </c:forEach>
                                                    </table>
+                                                   <div class="pagination justify-content-center">
+                                                         <c:if test="${not empty prev}">
+                                                               <a href="/cyberlibrary/admin/userlist?page=${prev}">&laquo;</a>
+                                                         </c:if>
+                                                         <c:forEach var="i" begin="0" end="${strony}">
+                                                               <a href="/cyberlibrary/admin/userlist?page=${i}">${i}</a>
+                                                         </c:forEach>
+                                                         <c:if test="${not empty next}">
+                                                               <a href="/cyberlibrary/admin/userlist?page=${next}">&raquo;</a>
+                                                         </c:if>
+                                                   </div>
                                                </c:if>
                                                <c:if test="${not empty autors}">
                                                     <table width="100%" class="table table-striped table-sm">

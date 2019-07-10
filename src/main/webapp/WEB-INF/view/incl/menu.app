@@ -18,29 +18,30 @@
                                 <a class="nav-link" href="/about">O nas</a>
                              </li>
                         </ul>
+                         <ul class="navbar-nav ml-auto">
                         <sec:authorize access="hasRole('ROLE_ANONYMOUS')">
-                            <ul class="navbar-nav ml-auto">
+
                                 <li class="nav-item ml-auto">
                                       <a class="nav-link" href="/cyberlibrary/register" title="Zarejestruj się" ><i class="fas fa-user-plus fa-lg"></i></a>
                                  </li>
                                 <li class="nav-item ml-auto">
                                       <a class="nav-link" href="/cyberlibrary/login" title="Zaloguj się" > <i class="fas fa-sign-in-alt fa-lg"></i> </a>
                                 </li>
-                            </ul>
                          </sec:authorize>
-                         <sec:authorize access="isAuthenticated()">
-                             <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item ml-auto">
-                                        <a class="nav-link" href="/cyberlibrary/admin?panel=1" title="Panel admina" > <i class="fas fa-user-shield fa-lg"></i></a>
-                                    </li>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <li class="nav-item ml-auto">
+                                     <a class="nav-link" href="/cyberlibrary/admin?panel=1" title="Panel admina" > <i class="fas fa-user-shield fa-lg"></i></a>
+                                </li>
+                             </sec:authorize>
+                             <sec:authorize access="isAuthenticated()">
                                     <li class="nav-item ml-auto">
                                             <a class="nav-link" href="/cyberlibrary/profil?panel=1" title="Mój profil" > <i class="far fa-user fa-lg"></i></a>
                                     </li>
                                     <li class="nav-item ml-auto">
                                             <a class="nav-link" href="/cyberlibrary/logout" title="Wyloguj" > <i class="fas fa-sign-out-alt fa-lg"></i></a>
                                     </li>
-                             </ul>
-                         </sec:authorize>
+                            </sec:authorize>
+                         </ul>
                     </div>
 
             </nav>

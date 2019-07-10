@@ -37,8 +37,8 @@
                             					</div>
                             					<div>
                             						<a href="/cyberlibrary/profil?panel=2" class="btn btn-lg btn-primary btn-block" >Dane użytkownika</a>
-                            						<a href="/cyberlibrary/profil?panel=3" class="btn btn-lg btn-primary btn-block" >Wypożyczone książki</a>
-                            						<a href="/cyberlibrary/profil?panel=4" class="btn btn-lg btn-primary btn-block" >Kary za opóźnienia </a>
+                            						<a href="/cyberlibrary/profil/borrowed?page=0" class="btn btn-lg btn-primary btn-block" >Wypożyczone książki</a>
+                            						<!--<a href="/cyberlibrary/profil?panel=4" class="btn btn-lg btn-primary btn-block" >Kary za opóźnienia </a>-->
                             					<div>
                             			</figure>
                                     </div>
@@ -56,7 +56,7 @@
                                                   <a href="/cyberlibrary/profil/editData" class="btn btn-lg btn-primary btn-block" >Zmień dane</a>
                                                </c:if>
                                                <c:if test="${not empty books}">
-                                                   <table width="100%">
+                                                   <table width="100%" class="table table-striped table-sm">
                                                        <tr>
                                                           <td>Tytuł:</td>
                                                           <td>Dziedzina:</td>
@@ -70,9 +70,17 @@
                                                               </tr>
                                                        </c:forEach>
                                                    </table>
-                                               </c:if>
-                                               <c:if test="${not empty warn}">
-                                                    <p>Jeszcze nie oprogramowano.</p>
+                                                   <div class="pagination justify-content-center">
+                                                        <c:if test="${not empty prev}">
+                                                             <a href="/cyberlibrary/admin/userlist?page=${prev}">&laquo;</a>
+                                                        </c:if>
+                                                        <c:forEach var="i" begin="0" end="${strony}">
+                                                             <a href="/cyberlibrary/admin/userlist?page=${i}">${i}</a>
+                                                        </c:forEach>
+                                                        <c:if test="${not empty next}">
+                                                            <a href="/cyberlibrary/admin/userlist?page=${next}">&raquo;</a>
+                                                        </c:if>
+                                                   </div>
                                                </c:if>
                             			</figure>
                             		</div>
